@@ -1,0 +1,136 @@
+.banner {
+    padding: 0;
+    width: 100%;
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: #fff;
+    width: 100vw;
+}
+.hide {
+    display: none;
+}
+.banner img {
+    display: block;
+    margin: 0 auto;
+    height: 80px;
+}
+
+@media only screen and (max-width: 576px) {
+    .banner img {
+        width: 218.57px;
+        height: 80px;
+    }
+  }
+
+.container-fluid {
+    margin: 0;
+    padding: 0;
+}
+
+.container-fluid .list-pokedex {
+    margin: 0 auto;
+    overflow: scroll;
+    height: 82vh;
+
+}
+
+
+::-webkit-scrollbar-track {
+    visibility: hidden;
+}
+::-webkit-scrollbar {
+    visibility: hidden;
+}   
+
+::-webkit-scrollbar-thumb {
+    visibility: hidden;
+
+}
+.container-fluid .list-pokedex .card {
+    border: none;
+}
+
+.card .card-img-top {
+    background: #ddd;
+    border-radius: 4px;
+}
+
+.card .card-img-top:hover {
+    opacity: .7;
+    cursor: pointer;
+}
+
+.card  {
+    margin-bottom: 20px;
+}
+/* .card:hover {
+    position: relative;
+    top: -10px;
+} */
+
+.card-body .type {
+    width: 30%;
+    display: inline-block;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: .8em;
+}
+
+.side-bar ul {
+    list-style: none;
+}
+ul li {
+    cursor: pointer;
+    font-size: 1.5em;
+}
+ul li li {
+    display: none;
+    font-size: .7em;
+}
+
+ul li:hover li {
+    display: block;
+}
+
+ul li li:hover  {
+    box-shadow: 0px 5px 3px 3px #123
+}
+
+.image-pokemon {
+    padding: 5px;
+}
+
+.image-pokemon img {
+    background: #e6e6e6; 
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.detail-info {
+    padding: 20px;
+    font-family: 'Grenze', serif;
+    font-size: 1.2em;
+}
+
+.info-base {
+    background: #30a7d7;
+    border-radius: 10px;
+}
+
+.info-base .title {
+    font-family: 'Inconsolata', monospace;
+    color: #fff;
+}
+
+.type {
+    width: 30%;
+    display: inline-block;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1em;
+}

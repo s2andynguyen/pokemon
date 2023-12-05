@@ -1,0 +1,79 @@
+
+.user--login {
+    display: none;
+}
+
+.side-bar {
+    background-color: #fff;
+    padding: 20px 15px;
+    box-shadow: 0 0 10px 1px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 90px;
+}
+.side-bar__title {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 500;
+}
+.banner-register:hover {
+    cursor: pointer;
+}
+.banner-login:hover {
+    cursor: pointer;
+}
+.banner-single:hover {
+    cursor: pointer;
+}
+.pokemon-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.card {
+    padding: 12px;
+    display: block;
+    text-decoration: none;
+    box-shadow: 0 0 10px 1px rgba(0,0,0,0.1);
+
+}
+.card:hover {
+    transform: translateY(-3px);
+    cursor: pointer;
+    box-shadow: 0 0 10px 1px rgba(0,0,0,0.2);
+    transition: all ease 0.2s;
+}
+
+.pokemon-single__img {
+    width: 100%;
+    border-radius: 12px;
+    background-color: #e6e6e6;
+}
+
+.pokemon-single__text {
+    font-size: 18px;
+    font-family: 'Inconsolata', monospace;
+    font-weight: 500;
+}   
+.pokemon-single__name {
+    font-size: 38px;
+}
+.pokemon-name{
+    font-weight: 500;
+    font-size: 20px;
+}
+.pokemon-single__type {
+    font-weight: 500;
+    font-size: 25px;
+    padding-top: 30px;
+}
+
+/* form validate */
+.form-group.invalid input{
+    /* outline:  1px solid rgb(224, 84, 84); */
+    border-color: red;
+}
+.form-message {
+    font-size: 13px;
+}
+.form-group.invalid .form-message {
+    color: red;
+}

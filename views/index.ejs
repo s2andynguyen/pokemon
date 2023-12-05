@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokemon</title>
+  <script src="/javascripts/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css" >
+  <link rel="stylesheet" href="/stylesheets/types.css" >
+  <link rel="stylesheet" href="/stylesheets/mycss.css" >
+</head>
+<body>
+  <div class="banner mt-4">
+    <center><img src="/images/banner.gif" width="179px" alt="banner" draggable="false" /></center>
+  </div>
+  <div class="container-lg app-content pt-5">
+    <div class="row">
+      <!-- menu -->
+      <div class="col-3">
+        <div class="side-bar">
+          <h3 class="side-bar__title mb-4 ms-2">POKEMON</h3>
+          <% if(login){ %>
+          <div class="user-logined mb-lg-3 text-center" >
+            <img src="/images/user-avt.jpg" width="50%" class="mb-3 rounded-circle" alt="">
+            <p class="mb-1">Xin chào <span class="fw-bold"><%= data[0].name %></span></p>
+            <p>User:<span> <%= data[0].username %></span></p>
+            <a href="/login" class="btn btn-secondary">Log Out</a>
+          </div>
+          <% } else { %>
+          <div class="form-group d-flex justify-content-between mb-4">
+            <a href="/register" class="btn btn-success w-50">Register</a>
+            <a href="/login" class="btn btn-success w-50 ms-3">Login</a>
+          </div>
+          <% } %>
+          <% menuArr.forEach(item => { if(login){%>
+            <ul class="menu list-group list-group-flush" style="list-style: none;">
+              <li>
+                <a  class="list-group-item list-group-item-action list-group-item-light p-3" 
+                href="<%= item.link %>"
+                >
+                  <%= item.title %>
+                </a>
+              </li>
+              <% if(Array.isArray(item.sub)){ %>
+                <ul class="sub-menu hide" style="list-style: none;">
+                  <% item.sub.forEach(subItem => { %>
+                    <li>
+                      <a  class="list-group-item list-group-item-action list-group-item-light p-3" 
+                      href="/logined/<%= data[0]._id+subItem.link %>"
+                      >
+                        <%= subItem.title %>
+                      </a>
+                    </li>
+                  <% }) %>
+                </ul>
+              <% } %>
+            </ul>
+
+            <% } else {%>
+              
+              <ul class="menu list-group list-group-flush" style="list-style: none;">
+                <li>
+                  <a  class="list-group-item list-group-item-action list-group-item-light p-3" 
+                  href="<%= item.link %>"
+                  >
+                    <%= item.title %>
+                  </a>
+                </li>
+                <% if(Array.isArray(item.sub)){ %>
+                  <ul class="sub-menu hide" style="list-style: none;">
+                    <% item.sub.forEach(subItem => { %>
+                      <li>
+                        <a  class="list-group-item list-group-item-action list-group-item-light p-3" 
+                        href="<%= subItem.link %>"
+                        >
+                          <%= subItem.title %>
+                        </a>
+                      </li>
+                    <% }) %>
+                  </ul>
+                <% } %>
+              </ul>
+  
+          <% }}) %>
+        </div>
+        
+
+      </div>
+
+      <!-- pokemon -->
+      <div class="col-9">
+
+        <div class="row">
+          <% for(let i = 0; i <= 50; i++ ){ %>
+            <% var idPoke = arrPokemon[i].id %>
+          <div data-href="/single" class="col-lg-3 col-md-4" onclick="chuyenTrang('/single','<%= idPoke %>')">
+            <div class="card border-0">
+
+              <div class="image-pokemon ">
+                <% if(idPoke < 10) { %>
+                  <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/00<%= idPoke %>.png" alt="">
+                  <p class="mb-0 text-secondary">#00<%= idPoke %></p>
+                  <% } else if(idPoke>=10 && idPoke<=99){ %>
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/0<%= idPoke %>.png" alt="">
+                    <p class="mb-0 text-secondary">#0<%= idPoke %></p>
+                  <% } else { %>
+                    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/<%= idPoke %>.png" alt="">
+                    <p class="mb-0 text-secondary">#<%= idPoke %></p>
+                  <% } %>
+  
+              </div>
+              <div class="">
+                <p class="pokemon-name">
+                  <%= arrPokemon[i].name.english %>
+                </p>
+              </div>
+              
+              <div>
+                <% for(let j = 0; j < arrPokemon[i].type.length; j++ ){  %>
+                    <% switch (arrPokemon[i].type[j]) {case 'Fire':%>
+                    <button class="btn btn-danger">Fire</button>
+                    <% break; case 'Grass':  %>
+                    <button class="btn btn-success">Grass</button>
+                    <% break; case 'Bug':  %>
+                    <button class="btn btn-success">Bug</button>
+                    <% break; case 'Poison':  %>
+                    <button class="btn poison">Poison</button>
+                    <% break; case 'Water':  %>
+                    <button class="btn water">Water</button>
+                    <% break; case 'Flying':  %>
+                    <button class="btn flying">Flying</button>
+                    <% break; case 'Electric':  %>
+                    <button class="btn electric">Electric</button>
+                    <% break; case 'Normal':  %>
+                    <button class="btn normal">Normal</button>
+                    <% break; case 'Ground':  %>
+                    <button class="btn ground">Ground</button>
+                    <% break; case 'Fairy':  %>
+                    <button class="btn fairy">Fairy</button>
+                    <% break; case 'Psychic':  %>
+                    <button class="btn psychic">Psychic</button>
+                    <% break; case 'Fighting':  %>
+                    <button class="btn fighting">Fighting</button>
+                    <% break; }%>
+                <% } %>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <% } %>
+        </div>
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <% if (login && notice){ %>
+    <script>
+        Swal.fire({
+        position: 'center-center',
+        icon: 'success',
+        title: 'Đăng Nhập Thành Công.',
+        showConfirmButton: false,
+        timer: 1500
+      })  
+    </script>
+  <% } %>
+  <script src="/javascripts/index.js"></script>
+  <script>
+      
+  </script>
+</body>
+</html>
